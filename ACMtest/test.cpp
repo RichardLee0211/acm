@@ -34,10 +34,6 @@ string foo(){
 
         return "me too thanks";
     }
-
-
-
-
 }
 
 int main(){
