@@ -1,5 +1,13 @@
-# Executable
-vsim
+# Executable is the one without .exten
+*
+# Unignore some
+!*.*
+!*/
+!*/Makefile
+!*/CMakeLists.txt
+
+# directory file
+.DS_Store
 
 # Editor Files
 *~
