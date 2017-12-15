@@ -4,8 +4,11 @@
 !*.*
 !*/
 !*/*.*
+!*/*/
+!*/*/*.*
 !*/Makefile
 !*/CMakeLists.txt
+*.bin
 
 # directory file
 .DS_Store
