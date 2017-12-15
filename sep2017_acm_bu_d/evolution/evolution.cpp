@@ -39,7 +39,7 @@ position right(position pos)
     if(pos.first<0 || pos.first>=M || pos.second<0 || pos.second>=(M-1))
         return position(-1, -1);
     else
-        return position(pos.first, pos.second-1);
+        return position(pos.first, pos.second+1);
 }
 
 position rightup(position pos)
