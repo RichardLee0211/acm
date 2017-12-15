@@ -3,6 +3,7 @@
 # Unignore some
 !*.*
 !*/
+!*/*.*
 !*/Makefile
 !*/CMakeLists.txt
 
