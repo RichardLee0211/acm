@@ -12,66 +12,74 @@ typedef std::pair<int, int> position;
 
 position up(position pos)
 {
-    if(pos.first<=0 || pos.first>=M || pos.second<0 || pos.second>=M)
-        return position(-1, -1);
-    else
-        return position(pos.first-1, pos.second);
+    int first = pos.first-1;
+    int second = pos.second;
+    if(first == -1)
+        first = M-1;
+    return position(first, second);
 }
 
 position down(position pos)
 {
-    if(pos.first<0 || pos.first>=(M-1) || pos.second<0 || pos.second>=M)
-        return position(-1, -1);
-    else
-        return position(pos.first+1, pos.second);
+    int first = pos.first+1;
+    int second = pos.second;
+    if(first == M)
+        first = 0;
+    return position(first, second);
 }
 
 position left(position pos)
 {
-    if(pos.first<0 || pos.first>=M || pos.second<=0 || pos.second>=M)
-        return position(-1, -1);
-    else
-        return position(pos.first, pos.second-1);
+    int first = pos.first;
+    int second = pos.second-1;
+    if(second == -1)
+        second = M-1;
+    return position(first, second);
 }
 
 position right(position pos)
 {
-    if(pos.first<0 || pos.first>=M || pos.second<0 || pos.second>=(M-1))
-        return position(-1, -1);
-    else
-        return position(pos.first, pos.second+1);
+    int first = pos.first;
+    int second = pos.second+1;
+    if(second == M)
+        second = 0;
+    return position(first, second);
 }
 
 position rightup(position pos)
 {
-    if(pos.first<=0 || pos.first>=M || pos.second<0 || pos.second>=(M-1))
-        return position(-1, -1);
-    else
-        return position(pos.first-1, pos.second+1);
+    int first = pos.first-1;
+    int second = pos.second+1;
+    if(first == -1) first = M-1;
+    if(second == M) second = 0;
+    return position(first, second);
 }
 
 position leftup(position pos)
 {
-    if(pos.first<=0 || pos.first>=M || pos.second<=0 || pos.second>=M)
-        return position(-1, -1);
-    else
-        return position(pos.first-1, pos.second-1);
+    int first = pos.first-1;
+    int second = pos.second-1;
+    if(first == -1) first = M-1;
+    if(second == -1) second = M-1;
+    return position(first, second);
 }
 
 position rightdown(position pos)
 {
-    if(pos.first<0 || pos.first>=(M-1) || pos.second<0 || pos.second>=(M-1))
-        return position(-1, -1);
-    else
-        return position(pos.first+1, pos.second+1);
+    int first = pos.first+1;
+    int second = pos.second+1;
+    if(first == M) first = 0;
+    if(second == M) second = 0;
+    return position(first, second);
 }
 
 position leftdown(position pos)
 {
-    if(pos.first<0 || pos.first>=(M-1) || pos.second<=0 || pos.second>=M)
-        return position(-1, -1);
-    else
-        return position(pos.first+1, pos.second-1);
+    int first = pos.first+1;
+    int second = pos.second-1;
+    if(first == M) first = 0;
+    if(second == M) second = 0;
+    return position(first, second);
 }
 
 // TODO: can function pointer helps to reduce these repeat
