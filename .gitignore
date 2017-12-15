@@ -3,11 +3,7 @@
 # Unignore some
 !*.*
 !*/
-!*/*.*
-!*/*/
-!*/*/*.*
-!*/Makefile
-!*/CMakeLists.txt
+!Makefile
 *.bin
 
 # directory file
