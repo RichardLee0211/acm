@@ -10,6 +10,31 @@ int** myArray;
 int** myArrayNext;
 typedef std::pair<int, int> position;
 
+/**
+ * using num keyboard layout to indict direction, that's
+ * 1 for leftup, 2 for up, 3 for rightup
+ * 4 for left, 5 for original, 6 for right
+ * 7 for leftdown, 8 for down, 9 for rightdown
+ */
+position getNeighborPos(position pos, int direction){
+    int first = pos.first;
+    int second = pos.second;
+    if(direction <= 0 || direction >= 10 ) return position(-1, -1);
+
+    if(direction == 1 || direction == 2 || direction == 3)
+        first = ((first-1)==-1) ? (M-1) : (first-1);
+    else if(direction == 7 || direction == 8 || direction == 9)
+        first = (first+1)%M;
+
+    if(direction == 1 || direction == 4 || direction == 5)
+        second = ((second-1) == -1) ? (M-1) : (second-1);
+    else if(direction == 3 || direction == 6 || direction == 9)
+        second = (second + 1) % M;
+
+    return position(first, second);
+
+}
+
 position up(position pos)
 {
     int first = pos.first-1;
