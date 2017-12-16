@@ -78,7 +78,7 @@ position leftdown(position pos)
     int first = pos.first+1;
     int second = pos.second-1;
     if(first == M) first = 0;
-    if(second == M) second = 0;
+    if(second == -1) second = M-1;
     return position(first, second);
 }
 
