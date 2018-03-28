@@ -8,6 +8,8 @@
 #include<vector>
 #include<string>
 
+std::vector<std::string> v;
+
 /* debug helpers */
 void printVector(std::vector<std::string> &v){
     for(auto e: v){
@@ -23,7 +25,11 @@ void findandSubstitude(std::vector<std::string> &v, int i){
         bool isChange = false;
         auto it = v[j].find(v[i]);
         while( it != std::string::npos){ // get rid of all concurrence
-            v[j].erase(it, it+v[i].size());
+#if 0 // DEBUG
+            if(i==5) std::cout<<v[i].size()<<"\n"; // v[5] = "s", but v[5] = "bsep"
+            // but v[4].erase(1, 1+1); erase se make v[5] bp
+#endif /* DEBUG */
+            v[j].erase((size_t)it, v[i].size());
             it = v[j].find(v[i]);
             isChange = true;
         }
@@ -42,7 +48,6 @@ void func(std::vector<std::string> &v){
 int main(){
     int lengthofArray{0};
     std::cin>>lengthofArray;
-    std::vector<std::string> v;
     for(int i=0; i<lengthofArray; ++i){
         v.push_back("");
         std::cin>>v[i];
