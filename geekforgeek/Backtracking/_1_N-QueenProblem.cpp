@@ -14,16 +14,16 @@ void printSolution(int board[N][N])
     {
         for (int j = 0; j < N; j++)
             printf(" %d ", board[i][j]);
-        printf("n");
+        printf("\n");
     }
 }
 
 /* A utility function to check if a queen can
- *    be placed on board[row][col]. Note that this
- *       function is called when "col" queens are
- *          already placed in columns from 0 to col -1.
- *             So we need to check only left side for
- *                attacking queens */
+ * be placed on board[row][col]. Note that this
+ * function is called when "col" queens are
+ * already placed in columns from 0 to col -1.
+ * So we need to check only left side for
+ * attacking queens */
 bool isSafe(int board[N][N], int row, int col)
 {
     int i, j;
@@ -47,20 +47,20 @@ bool isSafe(int board[N][N], int row, int col)
 }
 
 /* A recursive utility function to solve N
- *    Queen problem */
+ * Queen problem */
 bool solveNQUtil(int board[N][N], int col)
 {
     /* base case: If all queens are placed
-     *       then return true */
+     * then return true */
     if (col >= N)
         return true;
 
     /* Consider this column and try placing
-     *        this queen in all rows one by one */
+     * this queen in all rows one by one */
     for (int i = 0; i < N; i++)
     {
         /* Check if queen can be placed on
-         *           board[i][col] */
+         * board[i][col] */
         if ( isSafe(board, i, col) )
         {
             /* Place this queen in board[i][col] */
@@ -71,25 +71,25 @@ bool solveNQUtil(int board[N][N], int col)
                 return true;
 
             /* If placing queen in board[i][col]
-             *                doesn't lead to a solution, then
-             *                               remove queen from board[i][col] */
+             * doesn't lead to a solution, then
+             * remove queen from board[i][col] */
             board[i][col] = 0; // BACKTRACK
         }
     }
 
     /* If queen can not be place in any row in
-     *         this colum col  then return false */
+     * this colum col  then return false */
     return false;
 }
 
 /* This function solves the N Queen problem using
- *    Backtracking. It mainly uses solveNQUtil() to
- *       solve the problem. It returns false if queens
- *          cannot be placed, otherwise return true and
- *             prints placement of queens in the form of 1s.
- *                Please note that there may be more than one
- *                   solutions, this function prints one  of the
- *                      feasible solutions.*/
+ * Backtracking. It mainly uses solveNQUtil() to
+ * solve the problem. It returns false if queens
+ * cannot be placed, otherwise return true and
+ * prints placement of queens in the form of 1s.
+ * Please note that there may be more than one
+ * solutions, this function prints one  of the
+ * feasible solutions.*/
 bool solveNQ()
 {
     int board[N][N] = { {0, 0, 0, 0},
