@@ -10,6 +10,8 @@
 using namespace std;
 
 // Binary search
+// T is reference to tailIndices, which is always sorted
+// return index of ceil in set of arr[tailIndices[i]], l<i<r
 int GetCeilIndex(int arr[], vector<int> &T, int l, int r, int key){
     while (r - l > 1)
     {
@@ -23,15 +25,18 @@ int GetCeilIndex(int arr[], vector<int> &T, int l, int r, int key){
     return r;
 }
 
-// TODO: review again
+// record the actual subarray by using tailIndices[len-1] and prevIndices[]
+// return length of LongestIncreasingSubquence in arr
+// way2
+// time complexity: $\theta(n\log (n))$
 int LongestIncreasingSubquence(int arr[], int n){
     // Add boundary case, when array n is zero
     // Depend on smart pointers
 
-    vector<int> tailIndices(n, 0); // Initialized with 0
-    vector<int> prevIndices(n, -1); // initialized with -1
+    vector<int> tailIndices(n, 0); // tailIndices[i] is the index of tail of subarray, length i+1. Initialized with 0
+    vector<int> prevIndices(n, -1); // prevIndices[i] means index of A[i]'s previous element in subarray. initialized with -1
 
-    int len = 1; // it will always point to empty location
+    int len = 1; // length of subarray, tailIndices[len-1] is index of tail of LongestIncreasingSubquence, tailIndices[len] is like sentinal
     for (int i = 1; i < n; i++)
     {
         if (arr[i] < arr[tailIndices[0]])
@@ -48,7 +53,7 @@ int LongestIncreasingSubquence(int arr[], int n){
         else
         {
             // arr[i] wants to be a potential condidate of
-            // future subsequence
+            // future subsequence !!
             // It will replace ceil value in tailIndices
             int pos = GetCeilIndex(arr, tailIndices, -1,
                     len-1, arr[i]);
@@ -76,7 +81,9 @@ int main()
     return 0;
 }
 
-/* this method run on n^2 time complicity */
+/* way 1
+ * couldn't record the actual subarray
+ */
 int main_test() {
     int t;
     cin >> t;

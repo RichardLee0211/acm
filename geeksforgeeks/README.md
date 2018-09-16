@@ -270,7 +270,14 @@ content
 T&& t= <temportary>; C++1y new feature, rvalue reference, move operator
 https://www.artima.com/cppsource/rvalue.html
 
+my doc style:
+put design and mathmatics formula in README(.md or .tex)
+code is only about code
+
 ## TODO:
 #include<cmath> // useful: http://www.cplusplus.com/reference/cmath/
 #include<algorithm>
 // http://www.cplusplus.com/reference/algorithm/?kw=algorithm
+- [x] find a good way to redict text file to cin ?: ./exec < inputFile.txt > outputFile.txt
+- [ ]
+- [ ]
