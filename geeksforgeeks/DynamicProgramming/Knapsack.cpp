@@ -34,15 +34,11 @@ int knapsack(int CAPACITY, const std::vector<int> &weights, const std::vector<in
 
 int main(){
     // build input program
+    scanf("%*[^\n]\n", NULL); // skip the first line of data, which usually is explanation
     int T; // number of test cases
     scanf("%d", &T);
     while(T--){
-        // TODO: skip the first line of data, which usually is explanation
-        // std::string str;
-        // std::cin.getline();
-        //
-        scanf("%*[^\n]\n", NULL);
-        int N; scanf("%d", &N); // length of array
+        int N; scanf("%d", &N); printf("%d", N); // length of array
         int CAPACITY; scanf("%d", &CAPACITY);
         std::vector<int> weights(N, 0);
         std::vector<int> values(N, 0);
