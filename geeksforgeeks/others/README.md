@@ -100,6 +100,9 @@ Please refer Array algorithms in C++ STL (all_of, any_of, none_of, copy_n and it
 # scanf tricks
 from https://www.cprogramming.com/tips/tip/the-power-of-scanf
 ```cpp
+    scanf("%*[^\n]\n", NULL);
+    // skip the first line
+
 char a[100]
 scanf("%[^\n]\n", a);
 // it means read until you meet '\n', then trash that '\n'
@@ -121,3 +124,83 @@ scanf("%*s %s", last);
 // best answer, because you don't need extra temporary variable nor calling scanf twice
 ```
 consider using fgets and sscanf rather than just scanf itself
+
+# type and scanf and printf
+short,      at least 16 bits
+int,        at least 16 bits
+long,       at least 32 bits
+long long,  at least 64 bits
+
+float, 32 bits
+double, 64 bits
+
+16 bits, +- 3.27*10^4  0~6.55*10^4
+32 bits, +- 2.14*10^9 0~4.29*10^9
+64 bits, +- 9.22*10^18 0~1.84*10^19
+
+scanf reference here: http://www.cplusplus.com/reference/cstdio/scanf/?kw=scanf
+%*[width][length]specifier
+
+about fast input, here: https://www.geeksforgeeks.org/fast-io-for-competitive-programming/
+```cpp
+#include <bits/stdc++.h>
+    template<typename T> void scan(T &x)
+    {
+        x = 0;
+        bool neg = 0;
+        register T c = getchar();
+
+        if (c == '-')
+            neg = 1, c = getchar();
+
+        while ((c < 48) || (c > 57))
+            c = getchar();
+
+        for ( ; c < 48||c > 57 ; c = getchar());
+
+        for ( ; c > 47 && c < 58; c = getchar() )
+            x= (x << 3) + ( x << 1 ) + ( c & 15 );
+
+        if (neg) x *= -1;
+    }
+
+    template<typename T> void print(T n)
+    {
+        bool neg = 0;
+
+        if (n < 0)
+            n *= -1, neg = 1;
+
+        char snum[65];
+        int i = 0;
+        do
+        {
+            snum[i++] = n % 10 + '0';
+            n /= 10;
+        }
+
+        while (n);
+        --i;
+
+        if (neg)
+            putchar('-');
+
+        while (i >= 0)
+            putchar(snum[i--]);
+
+        putchar('\n');
+    }
+
+    // Driver Program
+    int main()
+    {
+        int value;
+
+        // Taking input
+        scan(value);
+
+        // Printing output
+        print(value);
+        return 0;
+    }
+```
