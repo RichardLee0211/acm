@@ -103,25 +103,25 @@ from https://www.cprogramming.com/tips/tip/the-power-of-scanf
     scanf("%*[^\n]\n", NULL);
     // skip the first line
 
-char a[100]
-scanf("%[^\n]\n", a);
-// it means read until you meet '\n', then trash that '\n'
+    char a[100]
+    scanf("%[^\n]\n", a);
+    // it means read until you meet '\n', then trash that '\n'
 
-canf("%[^,]", a);
-// this one doesn't trash the coma
+    canf("%[^,]", a);
+    // this one doesn't trash the coma
 
-scanf("%[^,],",a);
-// this one trashes the coma
+    scanf("%[^,],",a);
+    // this one trashes the coma
 
-scanf("%s %s", temp, last_name);
-// typical answer, using 1 temporary variable
+    scanf("%s %s", temp, last_name);
+    // typical answer, using 1 temporary variable
 
-scanf("%s", last_name);
-scanf("%s", last_name);
-// another answer, only use 1 variable, but calls scanf twice
+    scanf("%s", last_name);
+    scanf("%s", last_name);
+    // another answer, only use 1 variable, but calls scanf twice
 
-scanf("%*s %s", last);
-// best answer, because you don't need extra temporary variable nor calling scanf twice
+    scanf("%*s %s", last);
+    // best answer, because you don't need extra temporary variable nor calling scanf twice
 ```
 consider using fgets and sscanf rather than just scanf itself
 
@@ -204,3 +204,154 @@ about fast input, here: https://www.geeksforgeeks.org/fast-io-for-competitive-pr
         return 0;
     }
 ```
+
+
+## learning Cpp stream to deal with ACM input and output
+from the C++ Standard Library - a tutorial and reference
+
+from a good article online: http://acm.timus.ru/help.aspx?topic=cpp&locale=en
+this is online Judge System
+choose between standard(scanf, printf) or stream(cin, cout), stream is much slower
+example of reading to the end of a stream
+```cpp
+#include <stdio.h>
+    ...
+    // numbers
+    int n;
+    while (scanf("%d", &n) != EOF)
+    {
+           ...
+    }
+    // lines
+    char line[1000];
+    while (gets(line))
+    {
+           ...
+    }
+    // characters
+    int c;
+    while ((c = getchar()) != EOF)
+    {
+           ...
+    }
+```
+```cpp
+#include <iostream>
+    ...
+    // numbers
+    int n;
+    while (std::cin >> n)
+    {
+           ...
+    }
+    // lines
+    std::string line;
+    while (std::getline(std::cin, line))
+    {
+           ...
+    }
+    // characters
+    char c;
+    while (std::cin.get(c))
+    {
+           ...
+    }
+```
+
+from https://www.quora.com/Which-is-the-best-way-to-read-multiple-line-inputs-in-algorithmic-programming-contests-in-C++
+case 1: given the number of integers on each line
+```cpp
+    int n, k, tmp;
+    scanf("%d%d", &n, &k);
+    for (int i = 0; i < n; i++) {
+            for (int j = 0; j < k; j++) {
+                // replace "tmp" with something else
+                // or assign the value of "tmp" to whatever variables you want to
+                scanf("%d", &tmp);
+            }
+    }
+```
+a common case of data
+```txt
+N  K
+n1  a_1 a_2 ... a_n1
+n2  b_1 b_2 ... b_n2
+...
+n_N <n_N more ints>
+```
+simple handle
+```cpp
+    // excuse me for my bad code quality here, but this is how in practice
+    // I wrote solutions for competitive programming; my teammates are
+    // (were) used to it and did very similar (maybe less worse) things.
+    int N; scanf("%d", &N); while (N--) {
+        int n; scanf("%d", &n); while (n--) {
+            int x; scanf("%d", &x); // handle "x" however you like
+        }
+    }
+```
+
+case 2: various number of integers
+could use string and stringstream to deal with various number of characters, numbers, tokens and etc.
+```cpp
+    // TODO: exam doc
+    stringstream ss; string line, obj;
+    getline(cin, line);
+    ss<<line;
+    while(ss>>obj){
+        // do some crazy stuff
+    }
+```
+or go C style
+```cpp
+#include <cstdio>
+    char buffer[1000000];  // A large enough buffer
+    int add, x;
+
+    int main() {
+        int n; gets(buffer); sscanf(buffer, "%d", &n); while (n--) {
+            gets(buffer);
+            for (int s = 0; sscanf(buffer + s, "%d%n", &x, &add) != EOF; s += add) {
+                // %n the number of character read so far, doesn't consume characters
+                printf("<%d>", x);
+            }
+            puts(""); // one addtional new line characters
+        }
+    }
+```
+
+using this for competitive program
+using stdin or inputFile for test, we could do it in several ways:
+- using copy-and-paste, NO
+- using FILE* if = fopen("inputFile", "r"); fscanf(if, "format", &value);
+- using redirection in command line, and using scanf and printf to files
+- using freopen as following
+```c++
+    // stdin and stdout is also FILE * type
+    freopen("input_filename", "r", stdin);
+    freopen("output_filename", "w", stdout);
+```
+
+#### useful <cstdio> functions
+char* gets(char* str) is deprecated by c++11
+char* fgets(char* str, int num, FILE* stream)
+int ungetc(int character, FILE* stream)
+
+
+int scanf(const char* format, ...) like call fscanf(stdin, format, ...)
+int fscanf(FILE* stream, const char* format, ...)
+int sscanf(const char* s, const char* format, ...)
+
+int fseek(FILE* stream, long int offset, int origin)
+long int ftell(FILE* stream)
+int fsetpos(FILE* stream, fpos_t* pos) // a good way to put mark in stream
+int fgetpos(FILE* stream, fpos_t* pos)
+void rewind(FILE* stream)
+
+// handle binary file
+size_t fread(void* ptr, size_t size, size_t count, FILE* stream)
+
+void perror(const char * str)
+
+here: https://cses.fi/book/book.pdf
+luck to find this book
