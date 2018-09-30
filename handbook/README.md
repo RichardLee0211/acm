@@ -29,6 +29,26 @@ policy-based data structures
 ### comparsion to sorting
 
 ## ch8 Amortized analysis
+### two pointers method
+- subarray sum
+- two sum
+- 3sum problem
+here: https://en.wikipedia.org/wiki/3SUM
+$\theta(n^2)$ method:
+way1: for each i and j in array, find S-X[i]-X[j], using hash table so we can do search in $\thata(1) time$
+so what using hash table means in c++ is to use std::unorderd_map<int, int> hash
+way2: sort array, loop array with a; for each X[a], only need to find b and c in X[a+1 ~ n-1] such that X[b]+ X[c] = S - X[a]
+- subset sum
+here: https://en.wikipedia.org/wiki/Subset_sum_problem
+there is a Pseudo-polynomial time dynamic programming solution in this wiki page
+
+### mearst smaller elements
+using stack to do work,
+TODO: I need a application of this question ??
+TODO: programming exercise
+
+### sliding window minimum
+using queue, this is increment queue
 
 ## Advanced topic
 ## ch21 number theory
@@ -90,6 +110,46 @@ great, useful in cryptosystem
 
 ### chinese remainder theorem
 TODO: don't understand ??
+
+## ch22 combinatorics
+all right, let's keeping going
+### binomial coefficients
+!!counting the number of ways to represent an integer n as a sum of positive integer, page.207
+!!OMG: sum of binomial coefficients is n^2, and why pascal's triangle is important. (a+b)^n
+- boxes and balls
+!!OMG, scenario 2 and 3 are smart
+- multinomial coefficients
+
+### catalan numbers
+- parenthesis expressions
+TODO: formula1: don't understand why ??
+!!formula2: 66
+- counting trees
+kepa
+
+### inclusion-exclusion
+- inclusion-exclusion
+
+- derangements
+understand the formula is just the first step to solve this kind of question
+TODO: don't real understand f(n-1)??
+
+### Burnside's lemma
+TODO: low power to understand
+
+### cayley's formula
+TODO: low power
+
+## ch27 square root algorithm
+
+## ch28 segment trees revisited
+
+## ch29 geometry
+
+## ch30 sweep line algorithms
+
+TODO: to be continue, finish chapters that you like, heading to assignment
+
 
 # others
 when convert markdown to latex,
