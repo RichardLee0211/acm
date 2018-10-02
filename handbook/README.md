@@ -145,8 +145,38 @@ TODO: low power
 ## ch28 segment trees revisited
 
 ## ch29 geometry
+very happy to algorithm assignment lead me to here, hack it
+!!Heron's formula: area of triangle:$s(s-a)(s-b)(s-c)^(1/2)$ where a, b, c is side of triangle, s=(a+b+c)/2
+!!page.266, the magic area formalu, TODO: but how it come??
+### complex numbers
+std::complex<double>
+std::abs()
+std::arg()
+std::polar(length, angle)
+std::conj(vector) // conjugate
+
+### points and lines
+- point location
+- line segment intersection
+- point distance from a line
+I would like to review vector, here: https://en.wikipedia.org/wiki/Euclidean_vector
+dot product: $a \dot b = a_1 \times b_1 + a_2 \times b_2 + a_3 \times b_3 $
+cross product: $ ... $
+- point inside a polygon
+
+### polygon area
+!! page.271, the formula: 66
+- pick's theroem
+
+### distance functions
+- rotating coordinates
 
 ## ch30 sweep line algorithms
+WTF, the closest pair problem is in here
+continue
+### intersection points
+### closest pair problem
+### convex hull problem
 
 TODO: to be continue, finish chapters that you like, heading to assignment
 
