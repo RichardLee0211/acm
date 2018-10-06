@@ -28,6 +28,64 @@ policy-based data structures
 
 ### comparsion to sorting
 
+## ch5 complete search
+### generating subsets
+### generating permutation
+#include<algorithm>
+std::is_permutation
+std::next_permutation
+std::prev_permutaion
+about permutation in std
+0, 1, 2, 3, 4 permutation
+```txt
+    01234  10234  20134  30124  40123
+    01243  10243  20143  30142  40132
+    01324  10324  20314  30214  40213
+    01342  10342  20341  30241  40231
+    01423  10423  20413  30412  40312
+    01432  10432  20431  30421  40321
+
+    02134  12034  21034  31024  41023
+    02143  12043  21043  31042  41032
+    02314  12304  21304  31204  41203
+    02341  12340  21340  31240  41230
+    02413  12403  21403  31402  41302
+    02431  12430  21430  31420  41320
+
+    03124  13024  23014  32014  42013
+    03142  13042  23041  32041  42031
+    03214  13204  23104  32104  42103
+    03241  13240  23140  32140  42130
+    03412  13402  23401  32401  42301
+    03421  13420  23410  32410  42310
+
+    04123  14023  24013  34012  43012
+    04132  14032  24031  34021  43021
+    04213  14203  24103  34102  43102
+    04231  14230  24130  34120  43120
+    04312  14302  24301  34201  43201
+    04321  14320  24310  34210  43210
+```
+algorithm of wenchen::next_permutation_helper
+```Pseudo code
+    next_permutation_helper(A, l, r)
+        IF A[l] is biggest in A[l]~A[r]
+            return next_permutation_helper(A, l-1, r)
+        swap(A[l], A[k]) // A[k] is min(A[i] | A[i] > A[l])
+        std::sort(&A[l+1], &A[r+1])
+```
+
+### backtracking
+8-queen question
+recurrence function,
+way1, recurrence by parameter
+way2, recurrence by static data
+
+### prunting the search
+
+## ch6 greedy algorithms
+this is like finish the rest of basic techniques
+
 ## ch8 Amortized analysis
 ### two pointers method
 - subarray sum
