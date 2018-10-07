@@ -129,8 +129,14 @@ sum = \sum_{i=0}^N pow(a_i -x, 2), x is the mean
 huffman coding
 
 coding: use huffman to code 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 in pi million bits
+while, you never know it unless you code with it
+recap: const_cast<>() static_cast<>() dynamic_cast<>() reinterpret_cast<>(), here: https://www.geeksforgeeks.org/const_cast-in-c-type-casting-operators/
+unbelieve it takes me 3 hours to finish this part, std::unordered_set<use-pointer> because of hash
 
 this is like finish the rest of basic techniques
+
+## ch07 Dynamic programming
+TODO: to be continue, save for later,
 
 ## ch8 Amortized analysis
 ### two pointers method
