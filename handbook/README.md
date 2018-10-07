@@ -28,7 +28,7 @@ policy-based data structures
 
 ### comparsion to sorting
 
-## ch5 complete search
+## ch05 complete search
 ### generating subsets
 ### generating permutation
 #include<algorithm>
@@ -82,8 +82,54 @@ way1, recurrence by parameter
 way2, recurrence by static data
 
 ### prunting the search
+recap: function pointer and lambda function in std::qsort
+here: https://www.geeksforgeeks.org/lambda-expression-in-c/
+some good std functions to use lambda: std::sort, std::find_if, std::count
+
+fancy output:
+only printf fprintf sprintf
+when output to terminal, could make use of terminal codes(ANSI/VT100), some useful code show here: http://wiki.bash-hackers.org/scripting/terminalcodes
+\a terminal bell
+\b backspace
+\t horizontial tab
+\n new line
+\v vertical tab
+\f new page
+\r carriage return
+\e[<X>;<Y>H home-position to X and Y coordinates
+\e[0K  clear line from current cursor position to end of line
+\e[1K  clear lien from beginning to current cursor
+\e[2K  clear whole line
+\e[<X>m text attributes and coloring
+
+multithread, one to do calculation and one to indicate this process is still alive
+
+### meet in the middle
+it's the divide and conquer algorithm
+sum of subset
 
 ## ch6 greedy algorithms
+
+### coin problem
+nice choice of euro coins,
+for any sum x, the opitimal construction must contain largest coin that samller or equal to x
+that's to say, for any coin C_i and C_{i+1}, 2*C_i <= C_{i+1}
+
+### scheduling
+in next possible events, choose the one ends as earliest as possible
+
+### tasks and deadlines
+finish shortest task
+
+### minimizing sums
+sum = \sum_{i=0}^N abs(a_i -x), x is the median
+sum = \sum_{i=0}^N pow(a_i -x, 2), x is the mean
+
+### data compression
+huffman coding
+
+coding: use huffman to code 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 in pi million bits
+
 this is like finish the rest of basic techniques
 
 ## ch8 Amortized analysis
@@ -247,3 +293,22 @@ add \text{} or \inserttext{}
 * => \times
 min => \min
 max => \max
+
+using python as my computer
+python math is just use math in C library
+say \pi has random bits, 0,1,2,3,4,5,6,7,8,9 has the same possible to appear
+this is true:
+```
+    ➜  ch05completeSearch git:(master) ✗ ./test3 pi.txt
+    3.14159265358979311600
+    count[0]: 10258
+    count[1]: 10363
+    count[2]: 10170
+    count[3]: 10248
+    count[4]: 10210
+    count[5]: 10279
+    count[6]: 10268
+    count[7]: 10287
+    count[8]: 10195
+    count[9]: 10119
+```
