@@ -193,6 +193,23 @@ TODO: programming exercise
 ### sliding window minimum
 using queue, this is increment queue
 
+## ch09 range queries
+### static array queries
+- sum queries
+- minimum queries
+
+### binary index tree
+TODO: come back with application
+this is a tree that I never see
+
+### segment tree
+TODO: come back with application
+
+### addtional techniques
+
+## ch10 Bit manipulation
+TODO: to be continue
+
 ## Advanced topic
 ## ch21 number theory
 ### primes and factors
