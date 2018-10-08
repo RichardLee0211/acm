@@ -132,11 +132,44 @@ coding: use huffman to code 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 in pi million bits
 while, you never know it unless you code with it
 recap: const_cast<>() static_cast<>() dynamic_cast<>() reinterpret_cast<>(), here: https://www.geeksforgeeks.org/const_cast-in-c-type-casting-operators/
 unbelieve it takes me 3 hours to finish this part, std::unordered_set<use-pointer> because of hash
+TODO: read latter: https://thispointer.com/how-to-use-unordered_set-with-user-defined-classes-tutorial-example/
+TODO: read latter: std::heap
 
 this is like finish the rest of basic techniques
 
 ## ch07 Dynamic programming
-TODO: to be continue, save for later,
+### coin problem
+### longest incresing subsequence
+n^2 is easy to understand
+!!: nlogn here: https://www.geeksforgeeks.org/longest-monotonically-increasing-subsequence-size-n-log-n/
+TODO: code this
+this is like, every update make subsequence lower
+    1. If A[i] is smallest among all end
+    candidates of active lists, we will start
+    new active list of length 1.
+    2. If A[i] is largest among all end candidates of
+    active lists, we will clone the largest active
+    list, and extend it by A[i].
+    3. If A[i] is in between, we will find a list with
+    largest end element that is smaller than A[i].
+    Clone and extend this list by A[i]. We will discard all
+    other lists of same length as that of this modified list.
+
+
+### path in grid
+TODO: coding it, easy
+
+### knapsack problem
+TODO: coding it, easy
+if there is a n elements, a_0~a_n, and the Sum could be S
+by the recurrence formula, need to calculate n*S result
+
+### edit distance
+666
+
+### counting tilings
+TODO: need problems
+
 
 ## ch8 Amortized analysis
 ### two pointers method
