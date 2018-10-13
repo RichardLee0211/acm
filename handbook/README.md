@@ -208,6 +208,49 @@ TODO: come back with application
 ### addtional techniques
 
 ## ch10 Bit manipulation
+### bit represent
+the magic of design signed integer,
+Two’s complement is used, which means that the opposite number of a number is calculated by first inverting all the bits in the number, and then increasing the number by one.
+the signed number -x equals the unsigned number 2^n-x
+seems that I never use (nor)~x in coding
+~x = -x-1
+
+### bit operation
+x | (1<<k) set kth bit to 1
+x & ~(1<<k) set kth bit to 0
+x ^ (1<<k) invert kth bit
+
+```cpp
+    int x = 5328; // 00000000000000000001010011010000
+    std::cout << __builtin_clz(x) << "\n"; // 19, the number of zeros in the begining of number
+    std::cout << __builtin_ctz(x) << "\n"; // 4, the number of zeros in the end of number
+    std::cout << __builtin_popcount(x) << "\n"; // 5, the number of ones
+    std::cout << __builtin_parity(x) << "\n"; // 1, the parity (even or odd) of the number of ones
+```
+
+### representing sets
+```c++
+    for(int b{0}; b< (1<<n); b++){
+        if(__builtin_popcount(b) == k){
+            // process subset with exactly k elements
+        }
+    }
+
+    int b=0;
+    do{
+        // process subsets of x
+    }while(b=(b-x)&x);
+    // 66, think of  it as -(x-b) & x, and -x = ~x+1
+```
+
+## bit optimizations
+### hamming distances
+it has significate disadvantage, k<32 and each character only have 2 values
+better to use divide and conquer
+
+### counting subgrids
+66, it's cool because don't need to process them one element by one element, could do them 32 by 32 or 64 by 64
+
 TODO: to be continue
 
 ## Advanced topic
