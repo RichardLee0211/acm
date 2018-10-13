@@ -250,8 +250,32 @@ better to use divide and conquer
 
 ### counting subgrids
 66, it's cool because don't need to process them one element by one element, could do them 32 by 32 or 64 by 64
+make 32 seconds to 1 seconds
+
+## Dynamic programming
+### optimal selection
+
+### from permutations to subsets
+6666
+but limited to 64 bits, unless use std::bitset, like array of bool
+subsets problem is 2^n
+permutation problem is n!
+they are bad for computer
+TODO: code this using std::bitset
+
+### counting subsets
+wanna find subsets of S{0b1101 1100}
+```cpp
+    for(int p{0}; p<(1<<N); p++){
+        if(p&S !=0 && p&~S ==0){
+            // p is a subset of S
+        }
+    }
+```
 
 TODO: to be continue
+
+# part 2 graph algorithm
 
 ## Advanced topic
 ## ch21 number theory

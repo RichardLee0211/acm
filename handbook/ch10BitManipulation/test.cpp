@@ -10,4 +10,5 @@ int main(){
     std::cout << __builtin_popcount(x) << "\n"; // 5
     std::cout << __builtin_parity(x) << "\n"; // 1
     */
+    // printf("%d", 1<<33); // shift is larger than the width of type
 }
