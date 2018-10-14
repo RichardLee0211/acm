@@ -178,7 +178,7 @@ TODO: need problems
 - 3sum problem
 here: https://en.wikipedia.org/wiki/3SUM
 $\theta(n^2)$ method:
-way1: for each i and j in array, find S-X[i]-X[j], using hash table so we can do search in $\thata(1) time$
+way1: for each i and j in array, find S-X[i]-X[j], using hash table so we can do search in $\theta(1) time$
 so what using hash table means in c++ is to use std::unorderd_map<int, int> hash
 way2: sort array, loop array with a; for each X[a], only need to find b and c in X[a+1 ~ n-1] such that X[b]+ X[c] = S - X[a]
 - subset sum
@@ -272,10 +272,29 @@ wanna find subsets of S{0b1101 1100}
         }
     }
 ```
-
-TODO: to be continue
+TODO: come back for subsets problem
 
 # part 2 graph algorithm
+## ch11 basic of graphs
+### graph presentation
+- adjacency list representation
+- adjacency matrix representation
+- edge list representation
+
+## ch12 graph traversal
+### DFS
+### BFS
+### application
+- connectivity check
+TODO: code it
+- Find cycles
+TODO: whether there is a cycle, how many circles
+- bipartiteness check
+
+## ch13 shortest paths
+###
+I become impetient
+TODO: to be continue, page.125
 
 ## Advanced topic
 ## ch21 number theory
