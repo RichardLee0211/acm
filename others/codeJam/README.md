@@ -34,3 +34,16 @@ can't using long long, need a class wrapper on vector<bool>, and override ^
 operator
 what about C(1,6) in Math
 std::next_permutation
+
+### Dance Battle Strategy
+At begining, your dance team get E energy and H(starting with 0) Honor. You are facing a team of dancers with skills, S{S1, S2, S3..Si}. You can use following strategies to battle them one by one.
+
+1. you can battle Si, when E-Si>=0. Then Si is remove from S, and H increase by one.
+
+2. you can make excuse to delay the battle. Then Si is remove from head of S, and push back to end of S. Your E and H don't change.
+
+3. you can refuse to battle Si. Then Si is remove from S, and your E and H don't change.
+
+4. you can hire Si when H>0. Then Si is remove from S, and your E+= Si, and H decrease by one.
+
+your goal is to gain max H when S is empty. Output the max H.
