@@ -56,4 +56,26 @@ int main(){
     while(n--)
         printf("%d ", rand()%10);
 #endif
+
+
+    /* the poorly format data input handler */
+#define MAX_PER_LINE 1000
+#define MAX_PER_TOKEN 10
+    scanf("%*[^\n]\n", NULL); // data explain line
+    while(1){
+        char buf[MAX_PER_LINE];
+        char token[MAX_PER_TOKEN];
+        int add{0};
+        int sum{0}, num{0};
+
+        fgets(buf, sizeof(buf), stdin);
+        if(feof(stdin)) break;
+        for(int offset{0}; sscanf(buf+offset, "%s%n", token, &add)!=EOF; offset += add){
+            // do something with token
+            sscanf(token, "token%d", &num);
+            sum += num;
+            printf("%s ", token);
+        }
+        printf(" sum: %d\n", sum);
+    }
 }
