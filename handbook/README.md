@@ -288,7 +288,7 @@ TODO: come back for subsets problem
 - connectivity check
 TODO: code it
 - Find cycles
-TODO: whether there is a cycle, how many circles
+whether there is a cycle, how many circles ?: intro edge labeling in algorithm class, back edges
 - bipartiteness check
 
 ## ch13 shortest paths
