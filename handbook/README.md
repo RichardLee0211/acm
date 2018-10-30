@@ -28,6 +28,57 @@ policy-based data structures
 
 ### comparsion to sorting
 
+### wenchen: review of containers of C++
+from http://www.cplusplus.com/reference/queue/priority_queue/
+TODO: go through it
+
+#### array
+std::array<T>
+defines the fixed-size array container class
+what's the advantage then ?: maybe could cooperate with algorithm header better
+
+####  vector
+std::vector<>
+the one I use most
+the various length array
+
+#### deque
+std::deque<T>
+double ended queue
+
+#### queue
+- std::priority_queue
+```c++
+    namespace std{
+        template <class T, class Container=vector<T>, class compare>
+        class priority_queue;
+    }
+```
+internal: max_heap
+could only access the top
+top of queue is the "back", is max element
+
+- std::queue<T, Container>
+FIFO queue
+
+#### std::forward_list<>
+internal: forward linked list
+#### std::list<>
+internal: double linked list
+
+#### map
+std::map<Key, T, Compare>
+sorted
+#### std::unordered_map<>
+
+#### std::set<>
+sorted
+#### std::unordered_set<>
+hash function
+
+#### std::stack<>
+
+
 ## ch05 complete search
 ### generating subsets
 ### generating permutation
@@ -291,10 +342,58 @@ TODO: code it
 whether there is a cycle, how many circles ?: intro edge labeling in algorithm class, back edges
 - bipartiteness check
 
-## ch13 shortest paths
-###
-I become impetient
-TODO: to be continue, page.125
+ch13 shortest paths
+--------------------------------------------------------------------------------
+### bellman-Ford algorithm
+find the shortest path from one the all others
+go through paths
+in the implement, make use of tuple
+!! crazy, man, preview support speaking PDF
+- negative circle
+- SPFA algorithm
+
+### Dijkstra's algorithm
+each time, select smallest distanced and unfinished note to update others
+TODO: review std::initializer_list: https://en.cppreference.com/w/cpp/language/list_initialization
+TODO: code it
+
+### Floyd-Warshall algorithm
+have review it from algorithm class
+
+
+TODO: to be continue, page.14
+ch14 tree algorithm
+--------------------------------------------------------------------------------
+### tree traversal
+### Diameter
+### All longest paths
+### binary tree
+
+ch15 spanning tree
+--------------------------------------------------------------------------------
+### kruskal's algorithm
+### Union-find structure
+### prim's algorithm
+
+ch16 directed graphs
+--------------------------------------------------------------------------------
+### topological sorting
+### Dynamic programming
+### successor paths
+### cycle detection
+
+ch17 strong connectivity
+--------------------------------------------------------------------------------
+### korsaraju's algorithm
+### 2SAT problem
+
+ch18 tree queries
+--------------------------------------------------------------------------------
+### Finding ancestors
+### subtrees and paths
+### Lowest common ancestor
+### offline algorithm
+
 
 ## Advanced topic
 ## ch21 number theory

@@ -1,0 +1,8 @@
+// data of undirecte graph: n: the number of nodes, start with 1 \n point1 point2 weight
+5
+1 2 5
+1 3 3
+1 4 7
+2 4 3
+2 5 2
+4 5 2
