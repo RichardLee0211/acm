@@ -358,7 +358,7 @@ TODO: review std::initializer_list: https://en.cppreference.com/w/cpp/language/l
 TODO: code it
 
 ### Floyd-Warshall algorithm
-have review it from algorithm class
+have reviewed it from algorithm class
 
 
 TODO: to be continue, page.14
@@ -372,7 +372,12 @@ ch14 tree algorithm
 ch15 spanning tree
 --------------------------------------------------------------------------------
 ### kruskal's algorithm
+description1: the initial spanning tree only contains the nodes of the graph and does not contain any edges. Then the algorithm goes through the edges ordered by their weights, and always adds an edge to the tree if it does not create a cycle.
+description2: A MST can be grown from a forest of spanning trees by adding the smallest edge connecting two spanning trees.
+
 ### Union-find structure
+In a union-find structure, one element in each set is the representative of the set, and there is a chain from any other element of the set to the representative.
+
 ### prim's algorithm
 
 ch16 directed graphs
@@ -553,3 +558,111 @@ this is true:
     count[8]: 10195
     count[9]: 10119
 ```
+
+latex is great for building pdf file, but not for reading, hard to read the math so far
+
+I may build up my input format, line by line, comment start with #, data to separate with space
+
+#### about use std::set<Myclass> or std::priority_queue<Myclass>
+[reference](http://www.cplusplus.com/reference/set/set/set/)
+!! first, remember to include set or queue, or you get errors that confuse you
+- way0, using operate< by default
+- way1, create comp function and using function pointer to initial set
+- way2, create comp struct and operator() in it.
+    I don't like this idea, create a struct only for compare? but it has a clear code
+```cpp
+    struct Edge{
+        uint start;
+        uint end;
+        int weight;
+    };
+    /* using operator< by default */
+    bool operator<(const Edge& lhs, const Edge& rhs){
+        return lhs.weight < rhs.weight;
+    }
+    std::set<Edge> set0;
+    /* using edge_comp function for custom */
+    bool edge_comp(const Edge& lhs, const Edge& rhs){
+        return lhs.weight < rhs.weight;
+    }
+    std::set<Edge, bool (*)(const Edge&, const Edge&)> set1(edge_comp);
+    /* using struct Edge_comp for custom, and it's clear code */
+    struct Edge_comp{
+        bool operator()(const Edge* lhs, const Edge* rhs){
+            return lhs.weight < rhs.weight;
+        }
+    };
+    std::set<Edge, Edge_comp> set2;
+```
+more:
+- using friend operator<(const Edge& lhs, const Edge& rhs); in struct Edge to let operator< access private data
+- std::priority_queue<Edge> pq;
+- std::sort(data.begin(), data.end(), cmp); // cmp is a custom fn_pt
+
+TODO: what's the meaning of std::priority_queue when we already have std::set??
+TODO:
+in process-oriented programming, I could use a bunch of global data, and allocate, initial, update and free them
+but in objective-oriented programming, how do I organize data??
+
+they are not so clearly separeted
+- template
+- classes defination(data defination, method)
+- function
+- data
+- drive main function
+
+where to put data:
+- in template, for use of template method
+- in class, for use of class methods
+- in function, for use of one function
+- in global, could be accessed by funcitons, methods, and main dirve
+
+in object-oriented programming, we have file_parser class.
+after parser method, we need to store data somewhere that could be accessed by process functions or process classes
+these data are used to initial process classes and go through process
+until they reach the final status or generate output data
+
+input_file -> parser => data1 => process1 => data2 => process2 => output_data
+
+some order of execution is influence the result(dependence), other's could be paraller
+some behavior is trigger under some condition, this is why condition branch is so important
+
+exe_name <flags> input_file output_file
+input_file, input data or config file
+flags(what client wanna do at the beginning of program)
+stdout is used for client(tell client what's status of process right now)
+stdin is used for manipulate(what's client wanna do dynamically, not every is judged by program)
+output_file is used for result
+stderr is used for errors(tell client what's wrong with process, say it cann't open files)
+log_file is used for logs
+
+e.g. PS program:
+double click to open,
+flags are default ones,
+stdout is origin image,
+stdin is manipulation,
+stderr is the pop-up windows,
+output_file is modified files, which often overwrite the original one
+log_file is often ignored by artist
+
+it makes the input -> process -> output more realistic
+multiple_inputs -> process -> multiple_outputs
+and in the process, we have stdout and stdin for UI porpuse
+
+about getline
+- in C++, [here](http://www.cplusplus.com/reference/string/string/getline/)
+istream& getline(istream& is, string& str, char delim)
+get to use std::cin and std::string
+- in C, [here](https://en.cppreference.com/w/c/experimental/dynamic/getline)
+ssize_t getline(char **lineptr, size_t *n, FILE *stream);
+I am worried it's not stdandard c, it's in GNU C
+- used fgets, [here](https://en.cppreference.com/w/c/io/fgets)
+char *fgets(char *str, int count, FILE *stream );
+
+it seems that I known a lot of things after I have used them for a long time
+int main(int argc, char* argv[])
+argument count and argument value
+
+
+    // Edge testedge{1, 2, 3}; // call constrocture
+    // std::vector<Edge> vecEdges{{1,2,4}, {3, 4,5}}; // it's cool that you can do it
