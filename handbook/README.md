@@ -344,26 +344,94 @@ whether there is a cycle, how many circles ?: intro edge labeling in algorithm c
 
 ch13 shortest paths
 --------------------------------------------------------------------------------
+
 ### bellman-Ford algorithm
-find the shortest path from one the all others
-go through paths
+question: find the shortest path from one the all others
+assumption: graph doesn't contain a cycle with negetive length
+The algorithm reduces the distances by finding edges that shorten the paths until it is not possible to reduce any distance.
+O(mn)
 in the implement, make use of tuple
-!! crazy, man, preview support speaking PDF
+```cpp
+    for (int i = 1; i <= n; i++) distance[i] = INF;
+    distance[x] = 0;
+    for (int i = 1; i <= n-1; i++) {
+        for (auto e : edges) {
+            int a, b, w;
+            tie(a, b, w) = e;
+            distance[b] = min(distance[b], distance[a]+w);
+        }
+    }
+```
+!! crazy, man, the preview application on MacOS support speaking PDF
 - negative circle
 - SPFA algorithm
+don't exam every edge each time.
+maintain a queue of nodes:
+```pseudoCode
+    for (int i = 1; i <= n; i++) distance[i] = INF;
+    distance[x] = 0;
+    initially put starting node a into queue
+    while(!queue.empty())
+        loop edges attached to queue.head
+            if edges[head][b].weight + distance[head]<distance[b]
+                distance[b]=distance[head]+edges[head][b].weight
+                queue.push_back(b)
+        queue.pop()
+```
 
 ### Dijkstra's algorithm
+solve single-source-shortest-path problem
+assume: no negetive path in graph
+O(n+mlogm)
 each time, select smallest distanced and unfinished note to update others
+```cpp
+    for (int i = 1; i <= n; i++) distance[i] = INF;
+    distance[x] = 0;
+    q.push({0,x});
+    while (!q.empty()) {
+        int a = q.top().second; q.pop();
+        if (processed[a]) continue;
+        processed[a] = true;
+        for (auto u : adj[a]) {
+            int b = u.first, w = u.second;
+            if (distance[a]+w < distance[b]) {
+                distance[b] = distance[a]+w;
+                q.push({-distance[b],b});
+            }
+        }
+    }
+```
 TODO: review std::initializer_list: https://en.cppreference.com/w/cpp/language/list_initialization
 TODO: code it
 
 ### Floyd-Warshall algorithm
-have reviewed it from algorithm class
+solve shortest paths between all pair of nodes
+assume: directed path
+using two-dimensional array and reduces distance by using intermediate nodes in paths
+```cpp
+    // initial
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= n; j++) {
+            if (i == j) distance[i][j] = 0;
+            else if (adj[i][j]) distance[i][j] = adj[i][j];
+            else distance[i][j] = INF;
+        }
+    }
+    // using each nodes as intermediate nodes
+    for (int k = 1; k <= n; k++) {
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= n; j++) {
+                distance[i][j] = min(distance[i][j],
+                        distance[i][k]+distance[k][j]);
+            }
+        }
+    }
+```
 
-
-TODO: to be continue, page.14
 ch14 tree algorithm
 --------------------------------------------------------------------------------
+A tree is a connected, acyclic graph that consists of n nodes and n − 1 edges.
+TODO: finish the graph part
 ### tree traversal
 ### Diameter
 ### All longest paths
